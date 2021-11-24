@@ -18,33 +18,10 @@ public Driver(){
 }
 	public void  Initialization() {
 		de.uniba.wiai.lspi.chord.service.PropertiesLoader.loadPropertyFile();
-		//int m = Integer.parseInt(args[0]);
-		//In this implementation, m bits are converted into bytes array
-		// and passing an arbitrary number of bits results in this implementation to fail.
-		//System.out.println("Enter number of nodes: ");
-		//int nodes = Integer.parseInt(args[1]);
-		//System.out.println("Enter successor List Size: ");
 		int successor_list_size =1;
-		//int successor_list_size = Integer.parseInt(args[2]);
-		//System.out.println("Enter No. of Queries: ");
-		//int queries = 1;
-		//int queries = Integer.parseInt(args[3]);
-		//System.out.println("stabalization_delay_float");
-		double stabalization_delay_float = 2; //sc.nextDouble();
-		//double stabalization_delay_float = Double.parseDouble(args[4]);
-		//System.out.println("fix_finger_delay_float");
-		double fix_finger_delay_float = 2; //sc.nextDouble();
-		//double fix_finger_delay_float = Double.parseDouble(args[5]);
-		//System.out.println("check_pre_delay_float");
-		double check_pre_delay_float = 1; //sc.nextDouble();
-		//double check_pre_delay_float = Double.parseDouble(args[6]);
-		//System.out.println("prob_failure");
-	//	double prob_failure = 0.5; //sc.nextDouble();
-		//double prob_failure = Double.parseDouble(args[7]);
-		//System.out.println("run_number");
-	//	int run_number = 1; //sc.nextInt();
-		//int run_number = Integer.parseInt(args[8]);
-		// Setup System parameters here.
+		double stabalization_delay_float = 2;
+		double check_pre_delay_float = 1; 
+		double fix_finger_delay_float = 2; 
 		System.setProperty("de.uniba.wiai.lspi.chord.service.impl.ChordImpl.StabilizeTask.interval",
 				"" + (int)(stabalization_delay_float*10));
 		System.setProperty("de.uniba.wiai.lspi.chord.service.impl.ChordImpl.FixFingerTask.interval",

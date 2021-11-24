@@ -26,7 +26,33 @@ public class Driver {
 		
 	}
 	public static void _in_helper(String s) {
-		h2.runQueries(s);
+		
+		String re= h2.runQueries(s);
+		if(re.toLowerCase().contains(".com")) {
+			_com_helper(re);
+			
+			}
+			else if(re.toLowerCase().contains(".in"))
+			{
+				_in_helper(re);
+		
+			}
+			else if(re.toLowerCase().contains(".org")) {
+
+				_org_helper(re);
+			}
+			else if(re.toLowerCase().contains(".edu")) {
+           _edu_helper(re);
+		
+				
+			}
+			else if(re.toLowerCase().contains(".net")) {
+            _net_helper(re);
+			}
+			else {
+			//	System.out.println("NEED TO IMPLEMENT THIS AGAIN");
+			}
+
 	}
 public static void _com_helper(String s) {
 	String re=h1.runQueries(s);
@@ -59,14 +85,89 @@ public static void _com_helper(String s) {
 		}
 	}
 public static void _org_helper(String s) {
-	h3.runQueries(s);
+	String re=h3.runQueries(s);
+	if(re.toLowerCase().contains(".com")) {
+		_com_helper(re);
+		
+		}
+		else if(re.toLowerCase().contains(".in"))
+		{
+			_in_helper(re);
+	
+		}
+		else if(re.toLowerCase().contains(".org")) {
+
+			_org_helper(re);
+		}
+		else if(re.toLowerCase().contains(".edu")) {
+       _edu_helper(re);
+	
+			
+		}
+		else if(re.toLowerCase().contains(".net")) {
+        _net_helper(re);
+		}
+		else {
+		//	System.out.println("NEED TO IMPLEMENT THIS AGAIN");
+		}
+
 }
 
 public static void _edu_helper(String s) {
-	h4.runQueries(s);
+	String re=h4.runQueries(s);
+	if(re.toLowerCase().contains(".com")) {
+		_com_helper(re);
+		
+		}
+		else if(re.toLowerCase().contains(".in"))
+		{
+			_in_helper(re);
+	
+		}
+		else if(re.toLowerCase().contains(".org")) {
+
+			_org_helper(re);
+		}
+		else if(re.toLowerCase().contains(".edu")) {
+       _edu_helper(re);
+	
+			
+		}
+		else if(re.toLowerCase().contains(".net")) {
+        _net_helper(re);
+		}
+		else {
+		//	System.out.println("NEED TO IMPLEMENT THIS AGAIN");
+		}
+
 }
 public static void _net_helper(String s) {
-	h5.runQueries(s);
+	String re=h5.runQueries(s);
+	if(re.toLowerCase().contains(".com")) {
+		_com_helper(re);
+		
+		}
+		else if(re.toLowerCase().contains(".in"))
+		{
+			_in_helper(re);
+	
+		}
+		else if(re.toLowerCase().contains(".org")) {
+
+			_org_helper(re);
+		}
+		else if(re.toLowerCase().contains(".edu")) {
+       _edu_helper(re);
+	
+			
+		}
+		else if(re.toLowerCase().contains(".net")) {
+        _net_helper(re);
+		}
+		else {
+		//	System.out.println("NEED TO IMPLEMENT THIS AGAIN");
+		}
+
 }
 
 	public static void main(String[] args) {
