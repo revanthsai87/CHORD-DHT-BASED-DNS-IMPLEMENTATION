@@ -215,6 +215,7 @@ public class DriverHelper {
 	 * @param runNumber
 	 */
 	public String runQueries(String inputURL) {
+		String res=null;
 		try {
 			
 				Key sk = new StringKey(inputURL);

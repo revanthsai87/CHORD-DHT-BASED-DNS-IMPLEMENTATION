@@ -192,7 +192,7 @@ public class DriverHelper {
 	 * chord ring.
 	 */
 	public void insertData() {
-		dnsDataList = CSVReader.read("./_ IP1.csv");
+		dnsDataList = CSVReader.read("./_IP1.csv");
 		for (DNS data : dnsDataList) {
 			_IP1.driver.StringKey myKey=new _IP1.driver.StringKey(data.getWebsiteName());
 	//		StringKey myKey = new StringKey(data.getWebsiteName());

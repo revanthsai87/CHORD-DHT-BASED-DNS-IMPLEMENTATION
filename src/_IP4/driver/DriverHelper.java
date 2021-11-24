@@ -192,7 +192,7 @@ public class DriverHelper {
 	 * chord ring.
 	 */
 	public void insertData() {
-		dnsDataList = CSVReader.read("./_ IP1.csv");
+		dnsDataList = CSVReader.read("./_IP4.csv");
 		for (DNS data : dnsDataList) {
 			_IP4.driver.StringKey myKey=new _IP4.driver.StringKey(data.getWebsiteName());
 	//		StringKey myKey = new StringKey(data.getWebsiteName());
@@ -229,7 +229,7 @@ public class DriverHelper {
 						// If value is a NS record or CName record
 						//IF ns record for now print the respective value.
 						//If cname record return the vale to root.
-						System.out.println("IP1-->TEST VALUE---- "+value);
+						System.out.println("IP4-->TEST VALUE---- "+value);
 						}
 				}
 		}

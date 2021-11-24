@@ -1,4 +1,4 @@
-package _IP3.driver;
+package _MX.driver;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -192,9 +192,9 @@ public class DriverHelper {
 	 * chord ring.
 	 */
 	public void insertData() {
-		dnsDataList = CSVReader.read("./_IP3.csv");
+		dnsDataList = CSVReader.read("./_MX .csv");
 		for (DNS data : dnsDataList) {
-			_IP3.driver.StringKey myKey=new _IP3.driver.StringKey(data.getWebsiteName());
+			_MX.driver.StringKey myKey=new _MX.driver.StringKey(data.getWebsiteName());
 	//		StringKey myKey = new StringKey(data.getWebsiteName());
 			data.setMyKey(myKey);
 			//data.setMyKey(myKey);
@@ -229,7 +229,7 @@ public class DriverHelper {
 						// If value is a NS record or CName record
 						//IF ns record for now print the respective value.
 						//If cname record return the vale to root.
-						System.out.println("IP3-->TEST VALUE---- "+value);
+						System.out.println("MX RECORD---- "+value);
 						}
 				}
 		}
@@ -484,7 +484,7 @@ public void delete_activenode(){
 		List<DNS> correctnessViolated = new ArrayList<DNS>();
 		for (DNS data : correctnessTestDataList) {
 			System.out.println("Data: " + data.getIpAddress() + "Value: " + data.getWebsiteName());
-			_IP3.driver.StringKey myKey = new _IP3.driver.StringKey(data.getWebsiteName());
+			_MX.driver.StringKey myKey = new _MX.driver.StringKey(data.getWebsiteName());
 			data.setMyKey(myKey);
 			try {
 				Set<Serializable> values = bootStrapNode.retrieve(myKey);

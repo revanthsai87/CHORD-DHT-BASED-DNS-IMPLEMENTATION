@@ -22,12 +22,14 @@ public class Driver {
 	public static _org.driver.DriverHelper h3;
 	public static _edu.driver.DriverHelper h4;
 	public static _net.driver.DriverHelper h5;
+	public static _MX.driver.DriverHelper h6;
 	public Driver() {
 		
 	}
 	public static void _in_helper(String s) {
 		
 		String re= h2.runQueries(s);
+		if(re!=null) {
 		if(re.toLowerCase().contains(".com")) {
 			_com_helper(re);
 			
@@ -52,6 +54,7 @@ public class Driver {
 			else {
 			//	System.out.println("NEED TO IMPLEMENT THIS AGAIN");
 			}
+		}
 
 	}
 public static void _com_helper(String s) {
@@ -86,6 +89,7 @@ public static void _com_helper(String s) {
 	}
 public static void _org_helper(String s) {
 	String re=h3.runQueries(s);
+	if(re!=null) {
 	if(re.toLowerCase().contains(".com")) {
 		_com_helper(re);
 		
@@ -110,11 +114,13 @@ public static void _org_helper(String s) {
 		else {
 		//	System.out.println("NEED TO IMPLEMENT THIS AGAIN");
 		}
+	}
 
 }
 
 public static void _edu_helper(String s) {
 	String re=h4.runQueries(s);
+	if(re!=null) {
 	if(re.toLowerCase().contains(".com")) {
 		_com_helper(re);
 		
@@ -139,10 +145,12 @@ public static void _edu_helper(String s) {
 		else {
 		//	System.out.println("NEED TO IMPLEMENT THIS AGAIN");
 		}
+	}
 
 }
 public static void _net_helper(String s) {
 	String re=h5.runQueries(s);
+	if(re!=null) {
 	if(re.toLowerCase().contains(".com")) {
 		_com_helper(re);
 		
@@ -167,7 +175,7 @@ public static void _net_helper(String s) {
 		else {
 		//	System.out.println("NEED TO IMPLEMENT THIS AGAIN");
 		}
-
+	}
 }
 
 	public static void main(String[] args) {
@@ -175,7 +183,16 @@ public static void _net_helper(String s) {
 	System.out.println("Enter DOMAIN NAME :");
 		Scanner sc = new Scanner(System.in);
 		String s=sc.next();
-		if(s.toLowerCase().contains(".com")) {
+		 if (s.toLowerCase().indexOf("mail.")==0) {
+			 h6=new _MX.driver.DriverHelper();
+			_MX.driver.Driver d=new _MX.driver.Driver();
+			d.Initialization();
+			h6.createBootStrapNode(16);
+			h6.createNNodes(8);
+			h6.insertData();
+			h6.runQueries(s);
+		}
+		else if(s.toLowerCase().contains(".com")) {
 			h1 = new _com.driver.DriverHelper(args);
 			_com.driver.Driver d=new _com.driver.Driver();
 			d.Initialization();
@@ -232,6 +249,7 @@ public static void _net_helper(String s) {
 			_net_helper(s);
 			//help.runQueries(s);
 		}
+		
 		else {
 			System.out.println("NEED TO IMPLEMENT THIS AGAIN");
 		}

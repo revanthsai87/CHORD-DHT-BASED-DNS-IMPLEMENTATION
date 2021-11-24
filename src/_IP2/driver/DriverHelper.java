@@ -230,7 +230,7 @@ public class DriverHelper {
 						// If value is a NS record or CName record
 						//IF ns record for now print the respective value.
 						//If cname record return the vale to root.
-						System.out.println("TEST VALUE---- "+value);
+						System.out.println("IP2 --> TEST VALUE---- "+value);
 						}
 				}
 		}
