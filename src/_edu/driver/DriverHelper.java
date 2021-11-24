@@ -89,6 +89,9 @@ public class DriverHelper {
 	 * 
 	 * @param args
 	 */
+	public DriverHelper() {
+		
+	}					
 	public DriverHelper(String[] args) {
 
 	}
@@ -164,7 +167,7 @@ public class DriverHelper {
 		String protocol = URL.KNOWN_PROTOCOLS.get(URL.LOCAL_PROTOCOL);
 		URL localURL = null;
 		try {
-			localURL = new URL(protocol + "://localhost:" + portNumber + "/");
+			localURL = new URL(protocol + bootStrapNodeURL + portNumber + "/");
 		} catch (MalformedURLException e) {
 			throw new RuntimeException(e);
 		}
@@ -211,13 +214,13 @@ public class DriverHelper {
 	 * @param probFailure
 	 * @param runNumber
 	 */
-	public void runQueries(String inputURL) {
+	public String runQueries(String inputURL) {
 		try {
 			
 				Key sk = new StringKey(inputURL);
 				Chord chord = randomlySelectChordNode();
 				System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
-				
+				_edu.driver.Driver d=new _edu.driver.Driver();
 	
 				RetrievedKey retrievedKey = chord.retrieveWithHopCount(sk);
 				Set<Serializable> values = retrievedKey.getValues();
@@ -227,6 +230,13 @@ public class DriverHelper {
 						// If value is a NS record or CName record
 						//IF ns record for now print the respective value.
 						//If cname record return the vale to root.
+						try{
+						 int num= Integer.parseInt(value);  
+						 d._LEVEL3_Helper(num, inputURL);
+						  
+						  } catch(NumberFormatException e){  
+							res=value;
+						  }
 						System.out.println("TEST VALUE---- "+value);
 						}
 				}
@@ -236,7 +246,7 @@ public class DriverHelper {
 			e1.printStackTrace();
 		} 
 		
-		return;
+		return res;
 	}
 
 	/**

@@ -89,6 +89,9 @@ public class DriverHelper {
 	 * 
 	 * @param args
 	 */
+	public DriverHelper() {
+		
+	}					
 	public DriverHelper(String[] args) {
 
 	}
@@ -210,7 +213,7 @@ public class DriverHelper {
 	 * @param probFailure
 	 * @param runNumber
 	 */
-	public void runQueries(String inputURL) {
+	public String runQueries(String inputURL) {
 		try {
 			
 				Key sk = new StringKey(inputURL);
