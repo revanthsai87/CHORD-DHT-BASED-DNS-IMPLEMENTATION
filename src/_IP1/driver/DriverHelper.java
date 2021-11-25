@@ -119,7 +119,7 @@ public class DriverHelper {
 			// Creating the chord ring with the local URL.
 			chord.create(localURL);
 			allNodes.add(chord);
-			System.out.println(chord.getID());
+			System.out.println("Found NS Record: "+chord.getID());
 			bootStrapNode = chord;
 		} catch (ServiceException e) {
 			throw new RuntimeException(" Could not create DHT !", e);
@@ -178,7 +178,7 @@ public class DriverHelper {
 		}
 		try {
 			chord.join(localURL, bootstrapURL);
-			System.out.println(chord.getID());
+			//System.out.println(chord.getID());
 			runningNodes.add(chord);
 			allNodes.add(chord);
 		} catch (ServiceException e) {
@@ -218,24 +218,35 @@ public class DriverHelper {
 			
 				Key sk = new StringKey(inputURL);
 				Chord chord = randomlySelectChordNode();
-				System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
+			//	System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
 				
 	
 				RetrievedKey retrievedKey = chord.retrieveWithHopCount(sk);
+				//System.out.println("retrievedKey: "+retrievedKey);
 				Set<Serializable> values = retrievedKey.getValues();
-				if (values != null) {
+				//System.out.println("values: "+values);
+				if (values.size() > 0) {
 					for (Serializable k : values) {
 						String value = k.toString();
 						// If value is a NS record or CName record
 						//IF ns record for now print the respective value.
 						//If cname record return the vale to root.
 						Vector<String> res = splitStrings(value, '?');
+						int i=0;
 						for (String x : res)
 						{
-							System.out.println("IP1-->TEST VALUE---- "+x);
+							if(i==0){
+							System.out.println("IP is:"+x);
+							}
+							else{
+								System.out.println("Pxoxy Serevr "+i+" IP:"+x);
+							}
+							i++;
 						}
-						//System.out.println("IP1-->TEST VALUE---- "+value);
 						}
+				}
+				else{
+					System.out.println("Level3 : No DNS records found for "+inputURL);
 				}
 		}
 		
@@ -313,8 +324,8 @@ public class DriverHelper {
 			int i = 0;
 			for (Chord chord : allNodes) {
 				if (i != randomNumber) {   //== removed != instead
-					System.out.println("Selected node: " + chord.getURL());
-					System.out.println("Selected node data----- : " + chord.getID().toString()); //debug krishna
+					//System.out.println("Selected node: " + chord.getURL());
+					//System.out.println("Selected node data----- : " + chord.getID().toString()); //debug krishna
 					return chord;
 				}
 			}

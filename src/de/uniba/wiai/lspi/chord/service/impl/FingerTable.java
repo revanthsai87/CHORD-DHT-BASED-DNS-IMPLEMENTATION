@@ -95,7 +95,7 @@ final class FingerTable {
 
 		this.references = references;
 		this.localID = localID;
-		System.out.println("Length:" + localID.getLength());
+		//System.out.println("Length:" + localID.getLength());
 		this.remoteNodes = new Node[localID.getLength()];
 	}
 

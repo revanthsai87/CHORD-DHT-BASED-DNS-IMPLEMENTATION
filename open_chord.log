@@ -1,3 +1,24 @@
+<<<<<<< HEAD
 2021-11-25 14:58:02 FATAL 142 233 :885 - Key = fb.comHop Count Value:2
 2021-11-25 14:58:02 FATAL 75 188 :885 - Key = facebook.comHop Count Value:2
 2021-11-25 14:58:03 FATAL 182 194 :885 - Key = facebook.comHop Count Value:2
+=======
+2021-11-25 03:29:41 FATAL 61 146 :885 - Key = fb.comHop Count Value:2
+2021-11-25 03:29:41 FATAL 61 146 :885 - Key = facebook.comHop Count Value:2
+2021-11-25 03:29:42 FATAL 123 8 :885 - Key = facebook.comHop Count Value:1
+2021-11-25 15:17:34 FATAL 142 233 :885 - Key = fb.comHop Count Value:2
+2021-11-25 15:17:34 FATAL 142 233 :885 - Key = facebook.comHop Count Value:1
+2021-11-25 15:17:35 FATAL 62 151 :885 - Key = facebook.comHop Count Value:2
+2021-11-25 15:25:46 FATAL 75 188 :885 - Key = fb.comHop Count Value:2
+2021-11-25 15:25:46 FATAL 61 146 :885 - Key = facebook.comHop Count Value:2
+2021-11-25 15:25:47 FATAL 181 6 :885 - Key = facebook.comHop Count Value:2
+2021-11-25 15:28:30 FATAL 178 85 :885 - Key = fb.comHop Count Value:2
+2021-11-25 15:28:30 FATAL 178 85 :885 - Key = facebook.comHop Count Value:2
+2021-11-25 15:28:31 FATAL 154 156 :885 - Key = facebook.comHop Count Value:2
+2021-11-25 15:31:54 FATAL 178 85 :885 - Key = fb.comHop Count Value:2
+2021-11-25 15:31:54 FATAL 178 85 :885 - Key = facebook.comHop Count Value:2
+2021-11-25 15:31:54 FATAL 154 156 :885 - Key = facebook.comHop Count Value:2
+2021-11-25 15:37:49 FATAL 142 233 :885 - Key = fb.comHop Count Value:2
+2021-11-25 15:37:49 FATAL 142 233 :885 - Key = facebook.comHop Count Value:1
+2021-11-25 15:37:50 FATAL 154 156 :885 - Key = facebook.comHop Count Value:2
+>>>>>>> branch 'LEVEL_3_DNS' of https://github.com/revanthsai87/CHORD-DHT-BASED-DNS-IMPLEMENTATION.git
