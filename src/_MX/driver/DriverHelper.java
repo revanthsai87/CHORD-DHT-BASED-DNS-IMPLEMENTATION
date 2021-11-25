@@ -229,7 +229,8 @@ public class DriverHelper {
 						// If value is a NS record or CName record
 						//IF ns record for now print the respective value.
 						//If cname record return the vale to root.
-						System.out.println("MX RECORD---- "+value);
+						System.out.println("MX RECORD FOUND");
+						System.out.println("IP is: "+value);
 						}
 				}
 				else {

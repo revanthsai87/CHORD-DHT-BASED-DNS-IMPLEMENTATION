@@ -36,11 +36,13 @@ public static void insertToCache(String domain,String IP) {
 		++count;
 	}
 	else if(count==SIZE){
-		System.out.println("Cache is Full....!!! Unable to Add to the Cache");
-		System.out.println("Implementing LRU Cache Replacement Algorithm.......");
+		//System.out.println("Cache is Full !!!");
+		//System.out.println("Implementing LRU Cache Replacement Algorithm.......");
 		deleteLRUEntry();	
 		csvlist.add(data);
 		++count;
+		//Instead of deleting cache entry, we can increment cache size to some MAX_SIZE of cache.
+		//This is just to reduce the search time. 
 	}
 
 
@@ -49,7 +51,7 @@ public static void insertToCache(String domain,String IP) {
 public static void deleteLRUEntry() {
 	//sort csvlist by timestamps..
 		//delete first entry
-	System.out.println("Deleting Least Recently Used Cache Entry");
+	//System.out.println("Deleting Least Recently Used Cache Entry");
 	Collections.sort(csvlist);
 	csvlist.remove(0);
 	--count;
@@ -76,7 +78,7 @@ public static String checkCache(String searchedURL) throws InterruptedException 
 		//forloop and search the entry which has the searched domain..
 		// update the time stamp value.
 		if(r.getDomain().equals(searchedURL)) {
-			Thread.sleep(3000);
+			//Thread.sleep(3000);
 			update(searchedURL);
 			return r.getIPAddress();			
 		}
