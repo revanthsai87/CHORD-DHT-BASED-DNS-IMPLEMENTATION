@@ -218,7 +218,7 @@ public class DriverHelper {
 			
 			Key sk = new StringKey(inputURL);
 			Chord chord = randomlySelectChordNode();
-			System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
+			//System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
 			_com.driver.Driver d=new _com.driver.Driver();
 
 			RetrievedKey retrievedKey = chord.retrieveWithHopCount(sk);
@@ -270,8 +270,8 @@ catch (Exception e1) {
 			int i = 0;
 			for (Chord chord : allNodes) {
 				if (i != randomNumber) {   //== removed != instead
-					System.out.println("Selected node: " + chord.getURL());
-					System.out.println("Selected node data----- : " + chord.getID().toString()); //debug krishna
+					//System.out.println("Selected node: " + chord.getURL());
+					//System.out.println("Selected node data----- : " + chord.getID().toString()); //debug krishna
 					return chord;
 				}
 			}

@@ -219,7 +219,7 @@ public class DriverHelper {
 			
 				Key sk = new StringKey(inputURL);
 				Chord chord = randomlySelectChordNode();
-				System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
+				//System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
 				_in.driver.Driver d=new _in.driver.Driver();
 	
 				RetrievedKey retrievedKey = chord.retrieveWithHopCount(sk);
