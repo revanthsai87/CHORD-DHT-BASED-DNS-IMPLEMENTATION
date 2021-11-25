@@ -62,7 +62,7 @@ public class DriverHelper {
 	/**
 	 * Bootstrap node URL String
 	 */
-	private String bootStrapNodeURL = "://localhost:8080/";
+	private String bootStrapNodeURL = "://localhost:8082/";
 	/**
 	 * URL
 	 */
@@ -224,21 +224,28 @@ public class DriverHelper {
 	
 				RetrievedKey retrievedKey = chord.retrieveWithHopCount(sk);
 				Set<Serializable> values = retrievedKey.getValues();
-				if (values != null) {
+				if (values.size()>0) {
 					for (Serializable k : values) {
 						String value = k.toString();
 						// If value is a NS record or CName record
 						//IF ns record for now print the respective value.
 						//If cname record return the vale to root.
 						try {  
-						 int num= Integer.parseInt(value);  
-						 d._LEVEL3_Helper(num, inputURL);
-						  
-						  } catch(NumberFormatException e){  
-							res=value;
-						  }  
-						System.out.println("TEST VALUE---- "+value);
+							 int num= Integer.parseInt(value);  
+							 System.out.println("NS record Found at level 2");
+							 res=d._LEVEL3_Helper(num, inputURL);
+							 
+							// System.out.println("RES VALUE"+res);
+							  
+							  } catch(NumberFormatException e){  
+							    res=value;
+							    System.out.println("CNAME record is: "+inputURL+" -> "+res);
+							  }  
+
 						}
+				}
+				else {
+					System.out.println("Level2 : No DNS records found for "+inputURL);
 				}
 		}
 		
@@ -271,8 +278,8 @@ public class DriverHelper {
 			int i = 0;
 			for (Chord chord : allNodes) {
 				if (i != randomNumber) {   //== removed != instead
-					System.out.println("Selected node: " + chord.getURL());
-					System.out.println("Selected node data----- : " + chord.getID().toString()); //debug krishna
+					//System.out.println("Selected node: " + chord.getURL());
+					//System.out.println("Selected node data----- : " + chord.getID().toString()); //debug krishna
 					return chord;
 				}
 			}

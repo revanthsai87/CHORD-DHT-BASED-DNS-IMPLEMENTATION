@@ -5,14 +5,6 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
 
 import _com.driver.StringKey;
 import de.uniba.wiai.lspi.chord.com.Entry;
@@ -62,7 +54,7 @@ public class DriverHelper {
 	/**
 	 * Bootstrap node URL String
 	 */
-	private String bootStrapNodeURL = "://localhost:8080/";
+	private String bootStrapNodeURL = "://localhost:8087/";
 	/**
 	 * URL
 	 */
@@ -214,7 +206,8 @@ public class DriverHelper {
 	 * @param probFailure
 	 * @param runNumber
 	 */
-	public void runQueries(String inputURL) {
+	public String runQueries(String inputURL) {
+		String ans="";
 		try {
 			
 				Key sk = new StringKey(inputURL);
@@ -224,23 +217,85 @@ public class DriverHelper {
 	
 				RetrievedKey retrievedKey = chord.retrieveWithHopCount(sk);
 				Set<Serializable> values = retrievedKey.getValues();
-				if (values != null) {
+				if (values.size()>0) {
 					for (Serializable k : values) {
 						String value = k.toString();
 						// If value is a NS record or CName record
 						//IF ns record for now print the respective value.
 						//If cname record return the vale to root.
-						System.out.println("IP2 --> TEST VALUE---- "+value);
+						Vector<String> res = splitStrings(value, '?');
+						int i=0;
+						for (String x : res)
+						{
+							if(i==0){
+								ans=x;
+							System.out.println("IP is:"+x);
+							}
+							else{
+								System.out.println("Pxoxy Serevr "+i+" IP:"+x);
+							}
+							i++;
+						}
 						}
 				}
+				else{
+					System.out.println("Level3 : No DNS records found for "+inputURL);
+				}
+
 		}
 		
  catch (Exception e1) {
 			e1.printStackTrace();
 		} 
 		
-		return;
+		return ans;
 	}
+	
+	static Vector<String> splitStrings(String str, char dl)
+    {
+        String word = "";
+ 
+        // to count the number of split Strings
+        int num = 0;
+ 
+        // adding delimiter character
+        // at the end of 'str'
+        str = str + dl;
+ 
+        // length of 'str'
+        int l = str.length();
+ 
+        // traversing 'str' from left to right
+        Vector<String> substr_list = new Vector<String>();
+        for (int i = 0; i < l; i++)
+        {
+ 
+            // if str[i] is not equal to the delimiter
+            // character then accumulate it to 'word'
+            if (str.charAt(i) != dl)
+            {
+                word = word + str.charAt(i);
+            }
+            else
+            {
+ 
+                // if 'word' is not an empty String,
+                // then add this 'word' to the array
+                // 'substr_list[]'
+                if ((int) word.length() != 0)
+                {
+                    substr_list.add(word);
+                }
+ 
+                // reset 'word'
+                word = "";
+            }
+        }
+ 
+        // return the splitted Strings
+        return substr_list;
+    }
+
 
 	/**
 	 * Method to randomly select data that will be queried.
@@ -264,8 +319,8 @@ public class DriverHelper {
 			int i = 0;
 			for (Chord chord : allNodes) {
 				if (i != randomNumber) {   //== removed != instead
-					System.out.println("Selected node: " + chord.getURL());
-					System.out.println("Selected node data----- : " + chord.getID().toString()); //debug krishna
+					//System.out.println("Selected node: " + chord.getURL());
+					//System.out.println("Selected node data----- : " + chord.getID().toString()); //debug krishna
 					return chord;
 				}
 			}

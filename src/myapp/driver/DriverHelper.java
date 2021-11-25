@@ -116,7 +116,7 @@ public class DriverHelper {
 			// Creating the chord ring with the local URL.
 			chord.create(localURL);
 			allNodes.add(chord);
-			System.out.println(chord.getID());
+			//System.out.println(chord.getID());
 			bootStrapNode = chord;
 		} catch (ServiceException e) {
 			throw new RuntimeException(" Could not create DHT !", e);
@@ -175,7 +175,7 @@ public class DriverHelper {
 		}
 		try {
 			chord.join(localURL, bootstrapURL);
-			System.out.println(chord.getID());
+			//System.out.println(chord.getID());
 			runningNodes.add(chord);
 			allNodes.add(chord);
 		} catch (ServiceException e) {
@@ -229,7 +229,7 @@ public class DriverHelper {
 				Key sk = new StringKey(inputURL);
 				//data.websiteName=inputURL; //If not use strcmp()
 				Chord chord = randomlySelectChordNode();
-				System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
+				//System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
 				if (chord == null) {
 					continue;
 				}
@@ -301,8 +301,8 @@ public class DriverHelper {
 			int i = 0;
 			for (Chord chord : allNodes) {
 				if (i != randomNumber) {   //== removed != instead
-					System.out.println("Selected node: " + chord.getURL());
-					System.out.println("Selected node data----- : " + chord.getID().toString()); //debug krishna
+					//System.out.println("Selected node: " + chord.getURL());
+					//System.out.println("Selected node data----- : " + chord.getID().toString()); //debug krishna
 					return chord;
 				}
 			}
@@ -521,7 +521,7 @@ public void delete_activenode(){
 		correctnessTestDataList = CSVReader.read("./CorrectnessData.csv");
 		List<DNS> correctnessViolated = new ArrayList<DNS>();
 		for (DNS data : correctnessTestDataList) {
-			System.out.println("Data: " + data.getIpAddress() + "Value: " + data.getWebsiteName());
+			//System.out.println("Data: " + data.getIpAddress() + "Value: " + data.getWebsiteName());
 			StringKey myKey = new StringKey(data.getWebsiteName());
 			data.setMyKey(myKey);
 			try {

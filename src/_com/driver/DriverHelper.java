@@ -180,6 +180,8 @@ public class DriverHelper {
 		try {
 			chord.join(localURL, bootstrapURL);
 		//	System.out.println(chord.getID());
+			//System.out.println(chord.getID());
+//>>>>>>> branch 'LEVEL_3_DNS' of https://github.com/revanthsai87/CHORD-DHT-BASED-DNS-IMPLEMENTATION.git
 			runningNodes.add(chord);
 			allNodes.add(chord);
 		} catch (ServiceException e) {
@@ -215,7 +217,6 @@ public class DriverHelper {
 	public String runQueries(String inputURL) {
 		String res=null;
 		try {
-			
 			Key sk = new StringKey(inputURL);
 			Chord chord = randomlySelectChordNode();
 			//System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
@@ -223,7 +224,7 @@ public class DriverHelper {
 
 			RetrievedKey retrievedKey = chord.retrieveWithHopCount(sk);
 			Set<Serializable> values = retrievedKey.getValues();
-			if (values != null) {
+			if (values.size() > 0) {
 				for (Serializable k : values) {
 					String value = k.toString();
 					// If value is a NS record or CName record
@@ -231,14 +232,21 @@ public class DriverHelper {
 					//If cname record return the vale to root.
 					try {  
 					 int num= Integer.parseInt(value);  
-					 d._LEVEL3_Helper(num, inputURL);
+					 System.out.println("NS record Found at level 2");
+					 res=d._LEVEL3_Helper(num, inputURL);	  
+						 					  
+					// System.out.println("RES VALUE"+res);
 					  
 					  } catch(NumberFormatException e){  
 					    res=value;
+					    System.out.println("CNAME record is: "+inputURL+" -> "+res);
 					  }  
-					System.out.println("TLD _COM_TEST VALUE---- "+value);
+					  
 					}
 			}
+			else{
+					System.out.println("Level2 : No DNS records found for "+inputURL);
+				}
 	}
 	
 catch (Exception e1) {

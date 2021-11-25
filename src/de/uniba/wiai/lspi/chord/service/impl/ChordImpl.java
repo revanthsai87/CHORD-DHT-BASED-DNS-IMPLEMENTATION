@@ -885,7 +885,11 @@ public final class ChordImpl implements Chord, Report, AsynChord {
 		this.logger.fatal("Key = " + key + "Hop Count Value:" + hopCount.getCount());
 		if (result != null) {
 			for (Entry entry : result) {
+//<<<<<<< HEAD
 			//	System.out.println("Entry Key is "+ entry.getId().toString() + "        Value is "+ entry.getValue()); //debug krishna
+//=======
+				//System.out.println("Entry Key is "+ entry.getId().toString() + "        Value is "+ entry.getValue()); //debug krishna
+//>>>>>>> branch 'LEVEL_3_DNS' of https://github.com/revanthsai87/CHORD-DHT-BASED-DNS-IMPLEMENTATION.git
 				values.add(entry.getValue());
 			}
 		}

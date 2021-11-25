@@ -166,7 +166,7 @@ public final class ID implements Comparable<ID>, Serializable {
 				block = "0" + block;
 			}
 
-			result.append(block + ".");
+			result.append(block + " ");
 		}
 		return result.toString();
 	}
@@ -199,7 +199,7 @@ public final class ID implements Comparable<ID>, Serializable {
 
 			String block = Integer.toString(this.id[i] & 0xff);
 
-			result.append(block + ".");
+			result.append(block + " ");
 		}
 		return result.toString();
 	}
@@ -237,7 +237,7 @@ public final class ID implements Comparable<ID>, Serializable {
 				block = "0" + block;
 			}
 
-			result.append(block + ".");
+			result.append(block + " ");
 		}
 		return result.toString();
 	}

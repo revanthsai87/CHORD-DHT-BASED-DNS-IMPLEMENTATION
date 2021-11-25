@@ -77,7 +77,7 @@ public final class PropertiesLoader {
 		if (loaded) {
 			throw new IllegalStateException("Properties have already been loaded!"); 
 		}
-		loaded = true; 
+		//loaded = true; 
 		
 		// if property file was specified, use it instead of standard property
 		// file
