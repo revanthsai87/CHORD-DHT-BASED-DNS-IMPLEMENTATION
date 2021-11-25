@@ -885,7 +885,7 @@ public final class ChordImpl implements Chord, Report, AsynChord {
 		this.logger.fatal("Key = " + key + "Hop Count Value:" + hopCount.getCount());
 		if (result != null) {
 			for (Entry entry : result) {
-				System.out.println("Entry Key is "+ entry.getId().toString() + "        Value is "+ entry.getValue()); //debug krishna
+			//	System.out.println("Entry Key is "+ entry.getId().toString() + "        Value is "+ entry.getValue()); //debug krishna
 				values.add(entry.getValue());
 			}
 		}

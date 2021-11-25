@@ -119,7 +119,7 @@ public class DriverHelper {
 			// Creating the chord ring with the local URL.
 			chord.create(localURL);
 			allNodes.add(chord);
-			System.out.println(chord.getID());
+//			System.out.println(chord.getID());
 			bootStrapNode = chord;
 		} catch (ServiceException e) {
 			throw new RuntimeException(" Could not create DHT !", e);
@@ -178,7 +178,7 @@ public class DriverHelper {
 		}
 		try {
 			chord.join(localURL, bootstrapURL);
-			System.out.println(chord.getID());
+			//System.out.println(chord.getID());
 			runningNodes.add(chord);
 			allNodes.add(chord);
 		} catch (ServiceException e) {
