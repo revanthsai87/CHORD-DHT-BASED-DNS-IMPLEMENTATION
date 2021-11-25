@@ -200,6 +200,7 @@ public static void _net_helper(String s) {
 	//}
 }
 public static void  Initalize() {
+	
 	//IP1 INITIALIZATION
 	_IP1.driver.Driver d11=new _IP1.driver.Driver();
 	d11.Initialization();
@@ -294,6 +295,7 @@ public static void Exit() {
 	h6.shutDownAllNodes(1);
 }
 	public static void main(String[] args) throws InterruptedException {
+		System.out.println("STARTING ALL SERVERS");
 		Initalize();
 		boolean flag=true;
 		while(flag) {

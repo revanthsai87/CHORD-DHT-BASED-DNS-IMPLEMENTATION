@@ -112,10 +112,10 @@ public class Log4jLogger extends Logger {
 				usefile = false;
 			}
 			if (usefile) {
-				System.out.println("[" + Thread.currentThread().getName()
-						+ "] " + "INFO " + Log4jLogger.class.getName()
-						+ " - Configuring log4j with '"
-						+ System.getProperty(PROPERTIES_FILE_PROPERTY) + "'.");
+				//System.out.println("[" + Thread.currentThread().getName()
+				//		+ "] " + "INFO " + Log4jLogger.class.getName()
+				//		+ " - Configuring log4j with '"
+				//		+ System.getProperty(PROPERTIES_FILE_PROPERTY) + "'.");
 				try {
 					if (System.getProperty(PROPERTIES_FILE_PROPERTY)
 							.toLowerCase().endsWith(".xml")) {
@@ -126,11 +126,11 @@ public class Log4jLogger extends Logger {
 						org.apache.log4j.PropertyConfigurator
 								.configure(configURL);
 					}
-					System.out.println("[" + Thread.currentThread().getName()
-							+ "] " + "INFO " + Log4jLogger.class.getName()
-							+ " - log4j configured with '"
-							+ System.getProperty(PROPERTIES_FILE_PROPERTY)
-							+ "'.");
+				//	System.out.println("[" + Thread.currentThread().getName()
+				//			+ "] " + "INFO " + Log4jLogger.class.getName()
+				//			+ " - log4j configured with '"
+				//			+ System.getProperty(PROPERTIES_FILE_PROPERTY)
+				//			+ "'.");
 					Logger.getLogger(Logger.class).debug("Logger initialized.");
 				} catch (Throwable t) {
 					System.out.println("[" + Thread.currentThread().getName()
