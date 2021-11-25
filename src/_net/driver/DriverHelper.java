@@ -62,7 +62,7 @@ public class DriverHelper {
 	/**
 	 * Bootstrap node URL String
 	 */
-	private String bootStrapNodeURL = "://localhost:8080/";
+	private String bootStrapNodeURL = "://localhost:8083/";
 	/**
 	 * URL
 	 */
@@ -89,6 +89,9 @@ public class DriverHelper {
 	 * 
 	 * @param args
 	 */
+	public DriverHelper() {
+		
+	}					
 	public DriverHelper(String[] args) {
 
 	}
@@ -117,7 +120,7 @@ public class DriverHelper {
 			// Creating the chord ring with the local URL.
 			chord.create(localURL);
 			allNodes.add(chord);
-			System.out.println(chord.getID());
+		//	System.out.println(chord.getID());
 			bootStrapNode = chord;
 		} catch (ServiceException e) {
 			throw new RuntimeException(" Could not create DHT !", e);
@@ -164,7 +167,7 @@ public class DriverHelper {
 		String protocol = URL.KNOWN_PROTOCOLS.get(URL.LOCAL_PROTOCOL);
 		URL localURL = null;
 		try {
-			localURL = new URL(protocol + "://localhost:" + portNumber + "/");
+			localURL = new URL(protocol + bootStrapNodeURL + portNumber + "/");
 		} catch (MalformedURLException e) {
 			throw new RuntimeException(e);
 		}
@@ -176,7 +179,7 @@ public class DriverHelper {
 		}
 		try {
 			chord.join(localURL, bootstrapURL);
-			System.out.println(chord.getID());
+		//	System.out.println(chord.getID());
 			runningNodes.add(chord);
 			allNodes.add(chord);
 		} catch (ServiceException e) {
@@ -211,24 +214,39 @@ public class DriverHelper {
 	 * @param probFailure
 	 * @param runNumber
 	 */
-	public void runQueries(String inputURL) {
+	public String runQueries(String inputURL) {
+		String res=null;
 		try {
 			
 				Key sk = new StringKey(inputURL);
 				Chord chord = randomlySelectChordNode();
-				System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
-				
+				//System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
+				_net.driver.Driver d=new _net.driver.Driver();
 	
 				RetrievedKey retrievedKey = chord.retrieveWithHopCount(sk);
 				Set<Serializable> values = retrievedKey.getValues();
-				if (values != null) {
+				if (values.size()>0) {
 					for (Serializable k : values) {
 						String value = k.toString();
 						// If value is a NS record or CName record
 						//IF ns record for now print the respective value.
 						//If cname record return the vale to root.
-						System.out.println("TEST VALUE---- "+value);
+						try {  
+							 int num= Integer.parseInt(value);  
+							 System.out.println("NS record Found at level 2");
+							 res=d._LEVEL3_Helper(num, inputURL);
+							 
+							// System.out.println("RES VALUE"+res);
+							  
+							  } catch(NumberFormatException e){  
+							    res=value;
+							    System.out.println("CNAME record is: "+inputURL+" -> "+res);
+							  }  
+
 						}
+				}
+				else {
+					System.out.println("Level2 : No DNS records found for "+inputURL);
 				}
 		}
 		
@@ -236,7 +254,7 @@ public class DriverHelper {
 			e1.printStackTrace();
 		} 
 		
-		return;
+		return res;
 	}
 
 	/**
@@ -261,8 +279,8 @@ public class DriverHelper {
 			int i = 0;
 			for (Chord chord : allNodes) {
 				if (i != randomNumber) {   //== removed != instead
-					System.out.println("Selected node: " + chord.getURL());
-					System.out.println("Selected node data----- : " + chord.getID().toString()); //debug krishna
+				//	System.out.println("Selected node: " + chord.getURL());
+				//	System.out.println("Selected node data----- : " + chord.getID().toString()); //debug krishna
 					return chord;
 				}
 			}

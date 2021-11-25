@@ -350,7 +350,7 @@ public abstract class Endpoint {
 	 *             method occurs during endpoint creation.
 	 */
 	public static Endpoint createEndpoint(Node node, URL url) {
-System.out.println("TEST IN CREATE END POINT @@@@---"+url.toString());
+//System.out.println("TEST IN CREATE END POINT @@@@---"+url.toString());
 		synchronized (endpoints) {
 			if (endpoints.containsKey(url)) {
 				throw new RuntimeException("Endpoint already created!");

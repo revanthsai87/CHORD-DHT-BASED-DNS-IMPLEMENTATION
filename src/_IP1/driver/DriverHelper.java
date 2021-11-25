@@ -62,7 +62,7 @@ public class DriverHelper {
 	/**
 	 * Bootstrap node URL String
 	 */
-	private String bootStrapNodeURL = "://localhost:8081/";
+	private String bootStrapNodeURL = "://localhost:8086/";
 	/**
 	 * URL
 	 */
@@ -119,7 +119,11 @@ public class DriverHelper {
 			// Creating the chord ring with the local URL.
 			chord.create(localURL);
 			allNodes.add(chord);
-			System.out.println(chord.getID());
+//<<<<<<< HEAD
+			//System.out.println(chord.getID());
+//=======
+			//System.out.println("Found NS Record: "+chord.getID());
+//>>>>>>> branch 'LEVEL_3_DNS' of https://github.com/revanthsai87/CHORD-DHT-BASED-DNS-IMPLEMENTATION.git
 			bootStrapNode = chord;
 		} catch (ServiceException e) {
 			throw new RuntimeException(" Could not create DHT !", e);
@@ -178,7 +182,7 @@ public class DriverHelper {
 		}
 		try {
 			chord.join(localURL, bootstrapURL);
-			System.out.println(chord.getID());
+			//System.out.println(chord.getID());
 			runningNodes.add(chord);
 			allNodes.add(chord);
 		} catch (ServiceException e) {
@@ -192,7 +196,7 @@ public class DriverHelper {
 	 * chord ring.
 	 */
 	public void insertData() {
-		dnsDataList = CSVReader.read("./_ IP1.csv");
+		dnsDataList = CSVReader.read("./_IP1.csv");
 		for (DNS data : dnsDataList) {
 			_IP1.driver.StringKey myKey=new _IP1.driver.StringKey(data.getWebsiteName());
 	//		StringKey myKey = new StringKey(data.getWebsiteName());
@@ -213,24 +217,42 @@ public class DriverHelper {
 	 * @param probFailure
 	 * @param runNumber
 	 */
-	public void runQueries(String inputURL) {
+	public String runQueries(String inputURL) {
+		String ans="";
 		try {
 			
 				Key sk = new StringKey(inputURL);
 				Chord chord = randomlySelectChordNode();
-				System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
+			//	System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
 				
 	
 				RetrievedKey retrievedKey = chord.retrieveWithHopCount(sk);
+				//System.out.println("retrievedKey: "+retrievedKey);
 				Set<Serializable> values = retrievedKey.getValues();
-				if (values != null) {
+				//System.out.println("values: "+values);
+				if (values.size() > 0) {
 					for (Serializable k : values) {
 						String value = k.toString();
 						// If value is a NS record or CName record
 						//IF ns record for now print the respective value.
 						//If cname record return the vale to root.
-						System.out.println("IP1-->TEST VALUE---- "+value);
+						Vector<String> res = splitStrings(value, '?');
+						int i=0;
+						for (String x : res)
+						{
+							if(i==0){
+								ans=x;
+							System.out.println("IP is:"+x);
+							}
+							else{
+								System.out.println("Pxoxy Serevr "+i+" IP:"+x);
+							}
+							i++;
 						}
+						}
+				}
+				else{
+					System.out.println("Level3 : No DNS records found for "+inputURL);
 				}
 		}
 		
@@ -238,8 +260,53 @@ public class DriverHelper {
 			e1.printStackTrace();
 		} 
 		
-		return;
+		return ans;
 	}
+	
+	static Vector<String> splitStrings(String str, char dl)
+    {
+        String word = "";
+ 
+        // to count the number of split Strings
+        int num = 0;
+ 
+        // adding delimiter character
+        // at the end of 'str'
+        str = str + dl;
+ 
+        // length of 'str'
+        int l = str.length();
+ 
+        // traversing 'str' from left to right
+        Vector<String> substr_list = new Vector<String>();
+        for (int i = 0; i < l; i++)
+        {
+ 
+            // if str[i] is not equal to the delimiter
+            // character then accumulate it to 'word'
+            if (str.charAt(i) != dl)
+            {
+                word = word + str.charAt(i);
+            }
+            else
+            {
+ 
+                // if 'word' is not an empty String,
+                // then add this 'word' to the array
+                // 'substr_list[]'
+                if ((int) word.length() != 0)
+                {
+                    substr_list.add(word);
+                }
+ 
+                // reset 'word'
+                word = "";
+            }
+        }
+ 
+        // return the splitted Strings
+        return substr_list;
+    }
 
 	/**
 	 * Method to randomly select data that will be queried.
@@ -263,8 +330,8 @@ public class DriverHelper {
 			int i = 0;
 			for (Chord chord : allNodes) {
 				if (i != randomNumber) {   //== removed != instead
-					System.out.println("Selected node: " + chord.getURL());
-					System.out.println("Selected node data----- : " + chord.getID().toString()); //debug krishna
+					//System.out.println("Selected node: " + chord.getURL());
+					//System.out.println("Selected node data----- : " + chord.getID().toString()); //debug krishna
 					return chord;
 				}
 			}

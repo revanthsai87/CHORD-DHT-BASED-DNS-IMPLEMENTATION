@@ -811,7 +811,7 @@ public final class ChordImpl implements Chord, Report, AsynChord {
 			// invoke insertEntry method
 			try {
 				responsibleNode.insertEntry(entryToInsert);
-				System.out.println("Node data:" + responsibleNode.getNodeID() + "Data: " + key.toString());
+				//System.out.println("Node data:" + responsibleNode.getNodeID() + "Data: " + key.toString());
 				inserted = true;
 			} catch (CommunicationException e1) {
 				if (debug) {
@@ -859,7 +859,7 @@ public final class ChordImpl implements Chord, Report, AsynChord {
 			Node responsibleNode = null;
 
 			responsibleNode = findSuccessor(id, hopCount);
-			System.out.println("responsible node: "+ responsibleNode.getNodeID()   +"hopcount is "+ hopCount.getCount()); //debug krishna
+			//System.out.println("responsible node: "+ responsibleNode.getNodeID()   +"hopcount is "+ hopCount.getCount()); //debug krishna
 			
 			// invoke retrieveEntry method
 			try {
@@ -881,11 +881,15 @@ public final class ChordImpl implements Chord, Report, AsynChord {
 			}
 		}
 		Set<Serializable> values = new HashSet<Serializable>();
-		System.out.println("Key = " + key + "Hop Count Value:" + hopCount.getCount()); //debug krishna
+		//System.out.println("Key = " + key + "Hop Count Value:" + hopCount.getCount()); //debug krishna
 		this.logger.fatal("Key = " + key + "Hop Count Value:" + hopCount.getCount());
 		if (result != null) {
 			for (Entry entry : result) {
-				System.out.println("Entry Key is "+ entry.getId().toString() + "        Value is "+ entry.getValue()); //debug krishna
+//<<<<<<< HEAD
+			//	System.out.println("Entry Key is "+ entry.getId().toString() + "        Value is "+ entry.getValue()); //debug krishna
+//=======
+				//System.out.println("Entry Key is "+ entry.getId().toString() + "        Value is "+ entry.getValue()); //debug krishna
+//>>>>>>> branch 'LEVEL_3_DNS' of https://github.com/revanthsai87/CHORD-DHT-BASED-DNS-IMPLEMENTATION.git
 				values.add(entry.getValue());
 			}
 		}
@@ -1118,7 +1122,7 @@ public final class ChordImpl implements Chord, Report, AsynChord {
 	final Node findSuccessor(ID key, HopCount hopCount) {
 		checkIfTemFailure();
 		hopCount.increment();
-		System.out.println("Increment Hopcount");
+		//System.out.println("Increment Hopcount");
 		loadCount++;
 		if (key == null) {
 			NullPointerException e = new NullPointerException(
@@ -1131,9 +1135,9 @@ public final class ChordImpl implements Chord, Report, AsynChord {
 
 		// check if the local node is the only node in the network
 		Node successor = this.references.getSuccessor();
-		System.out.println("Local node successor is given by the :::::::::"+successor.getNodeID());
+	//	System.out.println("Local node successor is given by the :::::::::"+successor.getNodeID());
 		if (successor == null) {
-			System.out.println("sycceesor null Hopcount");
+			//System.out.println("sycceesor null Hopcount");
 			if (this.logger.isEnabledFor(INFO)) {
 				this.logger
 						.info("I appear to be the only node in the network, so I am "
@@ -1146,8 +1150,8 @@ public final class ChordImpl implements Chord, Report, AsynChord {
 		// check if the key to look up lies between this node and its successor
 		else if (key.isInInterval(this.getID(), successor.getNodeID())
 				|| key.equals(successor.getNodeID())) {
-			System.out.println("Hopcount   is "+hopCount.getCount()); //debug krishna
-			System.out.println("interval Hopcount");
+		//	System.out.println("Hopcount   is "+hopCount.getCount()); //debug krishna
+		//	System.out.println("interval Hopcount");
 			if (debug) {
 				this.logger
 						.debug("The requested key lies between my own and my "
@@ -1178,7 +1182,7 @@ public final class ChordImpl implements Chord, Report, AsynChord {
 		// ask closest preceding node found in local references for closest
 		// preceding node concerning the key to look up
 		else {
-			System.out.println("closet Hopcount");
+		//	System.out.println("closet Hopcount");
 			Node closestPrecedingNode = this.references
 					.getClosestPrecedingNode(key);
 
@@ -1189,7 +1193,7 @@ public final class ChordImpl implements Chord, Report, AsynChord {
 									+ closestPrecedingNode.getNodeID()
 									+ " concerning key " + key + " to look up");
 				}
-				System.out.println("Returning Closest Preceding Node.........."); //debug.
+			//	System.out.println("Returning Closest Preceding Node.........."); //debug.
 				return closestPrecedingNode.findSuccessor(key, hopCount);
 			} catch (CommunicationException e) {
 				this.logger
@@ -1201,7 +1205,7 @@ public final class ChordImpl implements Chord, Report, AsynChord {
 								+ " - looking up successor for failed node "
 								+ closestPrecedingNode.toString());
 				this.references.removeReference(closestPrecedingNode);
-				System.out.println("Returning successor Node.........."); //debug.
+			//	System.out.println("Returning successor Node.........."); //debug.
 				return findSuccessor(key, hopCount);
 			}
 		}
