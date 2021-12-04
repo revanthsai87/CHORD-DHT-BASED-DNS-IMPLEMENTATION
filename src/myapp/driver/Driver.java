@@ -19,12 +19,12 @@ public class Driver {
 	//For supporting Cname Reord
 	// Write separate function for content in main
 	//
-	public static  _com.driver.DriverHelper h1;
-	public static _in.driver.DriverHelper h2;
-	public static _org.driver.DriverHelper h3;
-	public static _edu.driver.DriverHelper h4;
-	public static _net.driver.DriverHelper h5;
-	public static _MX.driver.DriverHelper h6;
+	public static  _com.driver.DriverHelper h1=new _com.driver.DriverHelper();
+	public static _in.driver.DriverHelper h2=new _in.driver.DriverHelper();
+	public static _org.driver.DriverHelper h3=new _org.driver.DriverHelper();
+	public static _edu.driver.DriverHelper h4=new _edu.driver.DriverHelper();
+	public static _net.driver.DriverHelper h5=new _net.driver.DriverHelper();
+	public static _MX.driver.DriverHelper h6=new _MX.driver.DriverHelper();
 	public static _IP1.driver.DriverHelper ip1=new _IP1.driver.DriverHelper();
 	public static _IP2.driver.DriverHelper ip2=new _IP2.driver.DriverHelper();
 	public static _IP3.driver.DriverHelper ip3=new _IP3.driver.DriverHelper();
@@ -39,30 +39,8 @@ public class Driver {
 		String re= h2.runQueries(s);
 		if(re==null)
 			return;
-		if(re.toLowerCase().contains(".com")) {
-			_com_helper(re);
-			
-			}
-			else if(re.toLowerCase().contains(".in"))
-			{
-				_in_helper(re);
 		
-			}
-			else if(re.toLowerCase().contains(".org")) {
-
-				_org_helper(re);
-			}
-			else if(re.toLowerCase().contains(".edu")) {
-           _edu_helper(re);
-		
-				
-			}
-			else if(re.toLowerCase().contains(".net")) {
-            _net_helper(re);
-			}
-			else {
 			LRU.insertToCache(s, re);
-			}
 		
 
 	}
@@ -70,67 +48,17 @@ public static void _com_helper(String s) {
 	String re=h1.runQueries(s);
 	if(re==null)
 		return;
-		//if(re!=null) {
-			if(re.toLowerCase().contains(".com")) {
-			_com_helper(re);
-			
-			}
-			else if(re.toLowerCase().contains(".in"))
-			{
-				_in_helper(re);
-		
-			}
-			else if(re.toLowerCase().contains(".org")) {
-
-				_org_helper(re);
-			}
-			else if(re.toLowerCase().contains(".edu")) {
-           _edu_helper(re);
-		
-				
-			}
-			else if(re.toLowerCase().contains(".net")) {
-            _net_helper(re);
-			}
-			else {
+	
 				LRU.insertToCache(s, re);
-				//LRU.printCacheEntries();
-			//	System.out.println("NEED TO IMPLEMENT THIS AGAIN");
-			}
 
-		//}
 	}
 public static void _org_helper(String s) {
 	String re=h3.runQueries(s);
-	//if(re!=null) {
 	if(re==null)
 		return;
-	if(re.toLowerCase().contains(".com")) {
-		_com_helper(re);
-		
-		}
-		else if(re.toLowerCase().contains(".in"))
-		{
-			_in_helper(re);
 	
-		}
-		else if(re.toLowerCase().contains(".org")) {
-
-			_org_helper(re);
-		}
-		else if(re.toLowerCase().contains(".edu")) {
-       _edu_helper(re);
-	
-			
-		}
-		else if(re.toLowerCase().contains(".net")) {
-        _net_helper(re);
-		}
-		else {
 			LRU.insertToCache(s, re);
-		//	System.out.println("NEED TO IMPLEMENT THIS AGAIN");
-		}
-	//}
+
 
 }
 
@@ -138,66 +66,18 @@ public static void _edu_helper(String s) {
 	String re=h4.runQueries(s);
 	if(re==null)
 		return;
-	//if(re!=null) {
-	if(re.toLowerCase().contains(".com")) {
-		_com_helper(re);
-		
-		}
-		else if(re.toLowerCase().contains(".in"))
-		{
-			_in_helper(re);
 	
-		}
-		else if(re.toLowerCase().contains(".org")) {
-
-			_org_helper(re);
-		}
-		else if(re.toLowerCase().contains(".edu")) {
-       _edu_helper(re);
-	
-			
-		}
-		else if(re.toLowerCase().contains(".net")) {
-        _net_helper(re);
-		}
-		else {
 			LRU.insertToCache(s, re);
-		//	System.out.println("NEED TO IMPLEMENT THIS AGAIN");
-		}
-	//}
+	
 
 }
 public static void _net_helper(String s) {
 	String re=h5.runQueries(s);
 	if(re==null)
 		return;
-	//if(re!=null) {
-	if(re.toLowerCase().contains(".com")) {
-		_com_helper(re);
-		
-		}
-		else if(re.toLowerCase().contains(".in"))
-		{
-			_in_helper(re);
 	
-		}
-		else if(re.toLowerCase().contains(".org")) {
-
-			_org_helper(re);
-		}
-		else if(re.toLowerCase().contains(".edu")) {
-       _edu_helper(re);
-	
-			
-		}
-		else if(re.toLowerCase().contains(".net")) {
-        _net_helper(re);
-		}
-		else {
 			LRU.insertToCache(s, re);
-		//	System.out.println("NEED TO IMPLEMENT THIS AGAIN");
-		}
-	//}
+	
 }
 public static void  Initalize() {
 	
@@ -232,14 +112,12 @@ public static void  Initalize() {
 		ip5.createNNodes(8);
 		ip5.insertData();
 	//COM TLD Initialization
-	h1 = new _com.driver.DriverHelper();
 	_com.driver.Driver d=new _com.driver.Driver();
 	d.Initialization();
 	h1.createBootStrapNode(16);
 	h1.createNNodes(8);
 	h1.insertData();
 	//MX record initialization
-	h6=new _MX.driver.DriverHelper();
 	_MX.driver.Driver d1=new _MX.driver.Driver();
 	d1.Initialization();
 	h6.createBootStrapNode(16);
@@ -247,7 +125,6 @@ public static void  Initalize() {
 	h6.insertData();
 	
 	// IN TLD Initialization
-	h2=new _in.driver.DriverHelper();
 	_in.driver.Driver d2=new _in.driver.Driver();
 	d2.Initialization();
 	h2.createBootStrapNode(16);
@@ -255,7 +132,6 @@ public static void  Initalize() {
 	h2.insertData();
 	
 	//ORG TLD Initialization
-	h3=new _org.driver.DriverHelper();
 	_org.driver.Driver d3=new _org.driver.Driver();
 	d3.Initialization();
 	h3.createBootStrapNode(16);
@@ -263,7 +139,6 @@ public static void  Initalize() {
 	h3.insertData();
 	
 	//EDU TLD Initialization
-	h4=new _edu.driver.DriverHelper();
 	_edu.driver.Driver d4=new _edu.driver.Driver();
 	d4.Initialization();
 	h4.createBootStrapNode(16);
@@ -271,7 +146,6 @@ public static void  Initalize() {
 	h4.insertData();
 	
 	//NET TLD INITALIZATION
-	h5=new _net.driver.DriverHelper();
 	_net.driver.Driver d5=new _net.driver.Driver();
 	d5.Initialization();
 	h5.createBootStrapNode(16);
@@ -299,7 +173,7 @@ public static void Exit() {
 		Initalize();
 		boolean flag=true;
 		while(flag) {
-			System.out.println("Please Choose option:\n1.DNS Query\n2.Exit");
+			System.out.println("Please Choose option:\n1.DNS Query\n2.Admin\n3.Exit");
 			Scanner sc = new Scanner(System.in);
 			try {
 			int m=sc.nextInt();
@@ -382,6 +256,110 @@ public static void Exit() {
 		else {
 			System.out.println("NO RECORDS FOUND");
 		}
+			}
+			else if(m==2){
+				System.out.println("Choose what you want to perform\n1.Add Node\n2.Delete Node");
+				int k=sc.nextInt();
+				if(k==1){
+					System.out.println("Choose level where you want to perform operation\n1.At TLD\n2.At Level 3");
+					int l=sc.nextInt();
+					if(l==1){
+						System.out.println("Choose level where you want to perform operation\n1- .com server\n2- .in server" +
+								"\n3- .org server\n4- .edu server\n5- .net server\n6- MX server");
+						int p=sc.nextInt();
+						if(p==1){
+							h1.createAdditionalNode();
+						}
+						else if(p==2){
+							h2.createAdditionalNode();
+						}
+						else if(p==3){
+							h3.createAdditionalNode();
+						}
+						else if(p==4){
+							h4.createAdditionalNode();
+						}
+						else if(p==5){
+							h5.createAdditionalNode();
+						}
+						else {
+							h6.createAdditionalNode();
+						}
+					}
+					else{
+						System.out.println("Choose level where you want to perform operation\n1- IP server1\n2- IP server2" +
+								"\n3- IP server3\n4- IP server4\n5- IP server5");
+						int p=sc.nextInt();
+						if(p==1){
+							ip1.createAdditionalNode();
+						}
+						else if(p==2){
+							ip2.createAdditionalNode();
+						}
+						else if(p==3){
+							ip3.createAdditionalNode();
+						}
+						else if(p==4){
+							ip4.createAdditionalNode();
+						}
+						else if(p==5){
+							ip5.createAdditionalNode();
+						}
+						else {
+
+						}
+					}
+				}
+				else{
+					System.out.println("Choose level where you want to perform operation\n1.At TLD\n2.At Level 3");
+					int l=sc.nextInt();
+					if(l==1){
+						System.out.println("Choose level where you want to perform operation\n1- .com server\n2- .in server" +
+								"\n3- .org server\n4- .edu server\n5- .net server\n6- MX server");
+						int p=sc.nextInt();
+						if(p==1){
+							h1.delete_activenode();
+						}
+						else if(p==2){
+							h2.delete_activenode();
+						}
+						else if(p==3){
+							h3.delete_activenode();
+						}
+						else if(p==4){
+							h4.delete_activenode();
+						}
+						else if(p==5){
+							h5.delete_activenode();
+						}
+						else {
+							h6.delete_activenode();
+						}
+					}
+					else{
+						System.out.println("Choose level where you want to perform operation\n1- IP server1\n2- IP server2" +
+								"\n3- IP server3\n4- IP server4\n5- IP server5");
+						int p=sc.nextInt();
+						if(p==1){
+							ip1.delete_activenode();
+						}
+						else if(p==2){
+							ip2.delete_activenode();
+						}
+						else if(p==3){
+							ip3.delete_activenode();
+						}
+						else if(p==4){
+							ip4.delete_activenode();
+						}
+						else if(p==5){
+							ip5.delete_activenode();
+						}
+						else {
+
+						}
+					}
+				}
 			}
 			else {
 				flag=false;

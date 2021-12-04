@@ -1,6 +1,11 @@
 key,value
 facebook.com,21.200.238.33?21.200.238.34?21.200.238.35?21.200.238.36
-amazon.com,139.140.51.129?139.140.51.130?139.140.51.131?139.140.51.132
+amazon.com,139.140.51.129?139.140.51.130?139.140.51.131
+cs.jobs.amazon.com,139.140.51.132
+cpu.cs.jobs.com,222.32.123.78
+hw.cs.jobs.com,45.56.09.32
+jobs.amazon.com,198.23.33.45
+products.amazon.com,123.45.56
 cricbuzz.com,176.241.212.203
 hotstar.com,243.75.3.144
 primevideo.com,131.15.178.74
@@ -19,7 +24,7 @@ athens.edu,5.236.57.242
 auburn.edu,1.170.4.31
 aum.edu,54.137.0.101
 imo.org,169.222.103.14
-unesco.org,155.156.230.242
+unesco.org,155.156.230.242?53.97.74.255
 ioc-unesco.org,36.209.170.45
 gebco.org,143.234.66.97
 ngdc.noaa.org,222.31.234.234
