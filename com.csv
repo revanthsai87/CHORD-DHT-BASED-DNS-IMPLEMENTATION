@@ -2,6 +2,7 @@ key,value
 fb.com,facebook.com
 eb.com,ebay.com
 am.com,amazon.com
+amazon.com,{jobs:{cs:{cpu:{1}?alu:{2}?Default:{1}?}?it:{3}?hw:{ssd:{4}?Default:{1}?}?Default:{1}?}?products:{2}?trips:{3}?Default:{1}?}
 cb.com,cricbuzz.com
 ht.com,hotstar.com
 pm.com,primevideo.com
@@ -11,7 +12,6 @@ int.com,intel.com
 xe.com,xerox.com
 facebook.com,1
 ebay.com,1
-amazon.com,1
 cricbuzz.com,1
 hotstar.com,1
 primevideo.com,1

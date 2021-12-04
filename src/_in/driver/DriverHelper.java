@@ -216,44 +216,103 @@ public class DriverHelper {
 	public String runQueries(String inputURL) {
 		String res=null;
 		try {
-			
-				Key sk = new StringKey(inputURL);
-				Chord chord = randomlySelectChordNode();
-				//System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
-				_in.driver.Driver d=new _in.driver.Driver();
-	
-				RetrievedKey retrievedKey = chord.retrieveWithHopCount(sk);
-				Set<Serializable> values = retrievedKey.getValues();
-				if (values.size()>0) {
-					for (Serializable k : values) {
-						String value = k.toString();
-						// If value is a NS record or CName record
-						//IF ns record for now print the respective value.
-						//If cname record return the vale to root.
-						try {  
-							 int num= Integer.parseInt(value);  
-							 System.out.println("NS record Found at level 2");
-							 res=d._LEVEL3_Helper(num, inputURL);
-							 
-							// System.out.println("RES VALUE"+res);
-							  
-							  } catch(NumberFormatException e){  
-							    res=value;
-							    System.out.println("CNAME record is: "+inputURL+" -> "+res);
-							  }  
+			String[] temp=inputURL.split("\\.");
+			int n1=temp.length;
+			Key sk = new StringKey(temp[n1-2]+"."+temp[n1-1]);
+			Chord chord = randomlySelectChordNode();
+			//System.out.println("noDE WHICH IS SELECTED /////////////////*******: " + chord.getURL()); //debug krishna
+			_in.driver.Driver d=new _in.driver.Driver();
 
+			RetrievedKey retrievedKey = chord.retrieveWithHopCount(sk);
+			Set<Serializable> values = retrievedKey.getValues();
+			if (values.size() > 0) {
+				for (Serializable k : values) {
+					String value = k.toString();
+					// If value is a NS record or CName record
+					//IF ns record for now print the respective value.
+					//If cname record return the vale to root.
+					try {  
+					 int num= Integer.parseInt(value);  
+					 System.out.println("NS record Found at level 2");
+					 res=d._LEVEL3_Helper(num, inputURL);	  
+						 					  
+					// System.out.println("RES VALUE"+res);
+					  
+					  } catch(NumberFormatException e){  
+						//  System.out.println("sdfsf");
+						if(value.charAt(0)!='{')  {
+						System.out.println("CNAME record is: "+inputURL+" -> "+value);
+					    res=runQueries(value);
+					    
 						}
-				}
-				else {
+						else {
+							
+							System.out.println("Querying for Subdomains");
+							int n=Sub_domain_helper(temp,n1-3,value);
+							if(n==-1) {
+								System.out.println("Some Error");
+							}
+							else {
+							res=d._LEVEL3_Helper(n, inputURL);
+							}
+									
+						}
+					    
+					  }  
+					  
+					}
+			}
+			else{
 					System.out.println("Level2 : No DNS records found for "+inputURL);
 				}
+	}
+	
+catch (Exception e1) {
+		e1.printStackTrace();
+	} 
+	
+	return res;
+	}
+	
+	///SUB DOMAIN RESOLVER
+	
+	public static int Sub_domain_helper(String[] sk,int len,String s) {
+      // System.out.println(s);
+        if(s.length()==3){
+            return Character.getNumericValue(s.charAt(1));
+        }
+        if(len==-1){
+            sk[0]="Default";
+            return Sub_domain_helper(sk,0,s);
+        }
+
+		int count=0,start=0,end=1,flag=0;
+		String key=null,value=null;
+		for(int i=1;i<s.length()-1;i++){
+		   if(count==0 && s.charAt(i)==':'){
+		       start=i+1;
+		      key=s.substring(end,i);
+		      if(key.equals(sk[len])){
+		         // System.out.println("key--"+key);
+		          flag=1;
+		      }
+		   }
+		   else if(s.charAt(i)=='{')
+		       count++;
+		   else if(s.charAt(i)=='}')
+		    count--;
+		   if(count==0 && s.charAt(i)=='?'){
+		       
+		       value=s.substring(start,i);
+		       end=i+1;
+		       if(flag==1){
+		         //  System.out.println("value--"+value);
+		        return   Sub_domain_helper(sk,len-1,value);
+		       }
+		   }
+		   
 		}
-		
- catch (Exception e1) {
-			e1.printStackTrace();
-		} 
-		
-		return res;
+		return -1;
 	}
 
 	/**
