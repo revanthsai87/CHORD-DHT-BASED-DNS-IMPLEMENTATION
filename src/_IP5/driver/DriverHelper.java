@@ -360,16 +360,16 @@ public class DriverHelper {
 		}
 	}
 
-
-public void print_livenodes(){
-	Iterator it = runningNodes.iterator();
-		while (it.hasNext()) {
-			Chord chord = (Chord) it.next();
-				System.out.println("live nodes the node: " + chord.getID());	
-				
+	public int print_livenodes(){
+		int count=0;
+		Iterator it = runningNodes.iterator();
+			while (it.hasNext()) {
+				Chord chord = (Chord) it.next();
+					//System.out.println("live nodes the node: " + chord.getID());	
+					count++;
+				}
+	return count;
 			}
-
-		}
 public void delete_activenode(){
 	
 	try{
