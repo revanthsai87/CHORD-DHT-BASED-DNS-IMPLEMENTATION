@@ -268,22 +268,46 @@ public static void Exit() {
 								"\n3- .org server\n4- .edu server\n5- .net server\n6- MX server");
 						int p=sc.nextInt();
 						if(p==1){
+					
+						System.out.println("Live Nodes count  before addition  "+h1.print_livenodes());
 							h1.createAdditionalNode();
+						
+							System.out.println("Live Nodes count  after addition  "+h1.print_livenodes());
 						}
 						else if(p==2){
+						
+							System.out.println("Live Nodes count  before addition  "+h2.print_livenodes());
 							h2.createAdditionalNode();
+						
+							System.out.println("Live Nodes count  after addition  "+h2.print_livenodes());
 						}
 						else if(p==3){
+					
+							System.out.println("Live Nodes count  before addition  "+h3.print_livenodes());
 							h3.createAdditionalNode();
+						
+							System.out.println("Live Nodes count  after addition  "+h3.print_livenodes());
 						}
 						else if(p==4){
+					
+							System.out.println("Live Nodes count  before addition  "+h4.print_livenodes());
 							h4.createAdditionalNode();
+					
+							System.out.println("Live Nodes count  after addition  "+h4.print_livenodes());
 						}
 						else if(p==5){
+					
+							System.out.println("print live nodes before addition  "+ h5.print_livenodes());
 							h5.createAdditionalNode();
+					
+							System.out.println("Live Nodes count  after addition  "+h5.print_livenodes());
 						}
 						else {
+							
+							System.out.println("Live Nodes count  before addition  "+h6.print_livenodes());
 							h6.createAdditionalNode();
+							System.out.println("Live Nodes count  after addition  "+h6.print_livenodes());
+						
 						}
 					}
 					else{
@@ -291,22 +315,42 @@ public static void Exit() {
 								"\n3- IP server3\n4- IP server4\n5- IP server5");
 						int p=sc.nextInt();
 						if(p==1){
+							
+							System.out.println("Live Nodes count  before addition  "+ip1.print_livenodes());
 							ip1.createAdditionalNode();
+							
+							System.out.println("Live Nodes count  after addition  "+ip1.print_livenodes());
 						}
 						else if(p==2){
+							System.out.println("Live Nodes count  before addition  "+ip2.print_livenodes());
+							
 							ip2.createAdditionalNode();
+						
+							System.out.println("Live Nodes count  after addition  "+ip2.print_livenodes());
 						}
 						else if(p==3){
+							System.out.println("Live Nodes count  before addition  "+ip3.print_livenodes());
+							
 							ip3.createAdditionalNode();
+							
+							System.out.println("Live Nodes count  after addition  "+ip3.print_livenodes());
 						}
 						else if(p==4){
+							System.out.println("Live Nodes count  before addition  "+ip4.print_livenodes());
+							
 							ip4.createAdditionalNode();
+							
+							System.out.println("Live Nodes count  after addition  "+ip4.print_livenodes());
 						}
 						else if(p==5){
+							System.out.println("Live Nodes count  before addition  "+ip5.print_livenodes());
+					
 							ip5.createAdditionalNode();
+					
+							System.out.println("Live Nodes count  after addition  "+ip5.print_livenodes());
 						}
 						else {
-
+							System.out.println("// Enter proper input ");
 						}
 					}
 				}
@@ -318,22 +362,46 @@ public static void Exit() {
 								"\n3- .org server\n4- .edu server\n5- .net server\n6- MX server");
 						int p=sc.nextInt();
 						if(p==1){
+						
+							System.out.println("Live Nodes count  before deletion  "+h1.print_livenodes());
 							h1.delete_activenode();
+						
+							System.out.println("Live Nodes count  after deletion  "+h1.print_livenodes());
 						}
 						else if(p==2){
+						
+							System.out.println("Live Nodes count  before deletion  "+h2.print_livenodes());
 							h2.delete_activenode();
+							
+							System.out.println("Live Nodes count  after deletion  "+h2.print_livenodes());
 						}
 						else if(p==3){
+						
+							System.out.println("Live Nodes count  before deletion  "+h3.print_livenodes());
 							h3.delete_activenode();
+						
+							System.out.println("Live Nodes count  after deletion  "+h3.print_livenodes());
 						}
 						else if(p==4){
+						
+							System.out.println("Live Nodes count  before deletion  "+h4.print_livenodes());
 							h4.delete_activenode();
+						
+							System.out.println("Live Nodes count  after deletion  "+h4.print_livenodes());
 						}
 						else if(p==5){
+						
+							System.out.println("Live Nodes count  before deletion  "+h5.print_livenodes());
 							h5.delete_activenode();
+						
+							System.out.println("Live Nodes count  after deletion  "+h5.print_livenodes());
 						}
 						else {
+						
+							System.out.println("Live Nodes count  before deletion  "+h6.print_livenodes());
 							h6.delete_activenode();
+							
+							System.out.println("Live Nodes count  after deletion  "+h6.print_livenodes());
 						}
 					}
 					else{
@@ -341,19 +409,38 @@ public static void Exit() {
 								"\n3- IP server3\n4- IP server4\n5- IP server5");
 						int p=sc.nextInt();
 						if(p==1){
+						
+							System.out.println("Live Nodes count  before deletion  "+ip1.print_livenodes());
 							ip1.delete_activenode();
+						
+							System.out.println("Live Nodes count  after deletion "+ip1.print_livenodes());
 						}
 						else if(p==2){
+						
+							System.out.println("Live Nodes count  before deletion  "+ip2.print_livenodes());
 							ip2.delete_activenode();
+						
+							System.out.println("Live Nodes count  after deletion  "+ip2.print_livenodes());
 						}
 						else if(p==3){
+						
+							System.out.println("Live Nodes count  before deletion  "+ip3.print_livenodes());
 							ip3.delete_activenode();
+						
+							System.out.println("Live Nodes count  after deletion  "+ip3.print_livenodes());
 						}
 						else if(p==4){
+						
+							System.out.println("Live Nodes count  before deletion "+ip4.print_livenodes());
 							ip4.delete_activenode();
+						
+							System.out.println("Live Nodes count  after deletion  "+ip4.print_livenodes());
 						}
-						else if(p==5){
+						else if(p==5){							
+							System.out.println("Live Nodes count  before deletion  "+ip5.print_livenodes());
 							ip5.delete_activenode();
+						
+							System.out.println("Live Nodes count  after deletion  "+ip5.print_livenodes());
 						}
 						else {
 
